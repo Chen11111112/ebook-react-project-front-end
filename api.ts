@@ -18,10 +18,9 @@ API.interceptors.request.use(function (config: InternalAxiosRequestConfig) {
   return config;
 });
 
-// Fix response interceptor
 API.interceptors.response.use(
-  response => response,
-  error => {
+  (response) => {return response.data},
+  (error) => {
     if (error.response) {
       // 伺服器有回應 (例如 400, 404, 500)
       return Promise.reject(error.response.data);
